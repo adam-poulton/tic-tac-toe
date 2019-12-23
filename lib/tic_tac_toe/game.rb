@@ -34,7 +34,8 @@ module TicTacToe
         while !valid_move
           puts solicit_move
           x, y = get_move
-          valid_move = board.get_cell(x, y).value.empty?
+          # ensure selected move is in range and corresponds to an empty square
+          valid_move = !x.nil? && board.get_cell(x, y).value.empty?
         end
         board.set_cell(x, y, current_player.color)
         if board.game_over
